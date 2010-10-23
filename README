@@ -1,0 +1,79 @@
+ECE 354 Real-Time Operating System Project - University of Waterloo
+Group #04: Adam A. Flynn, Julie Laver, Michael A. Soares, Zi Wei Zhang
+Copyright (c) 2010, Group #04
+
+Last Modified: July 11, 2010
+
+-------------------------------------------------------------------
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/&gt;.
+
+-------------------------------------------------------------------
+
+Project Description:
+	This is an implementation of a small real-time executive (RTX)
+	that will run on a MCF5307-based microcontroller board. The 
+	executive provides a basic multiprogramming environment, with 
+	5 priority levels, preemption, simple memory management, 
+	message-based interprocess communication, a basic timing service, 
+	a system console I/O and debugging support.
+
+Description of Archive Contents:
+	- *submit* directory - contains all scripts and source and header
+	  files needed to compile our group's implementation of RTX P4.
+	- *rtx_test_file* directory - contains our group's rtx_test.s19 file
+
+Compilation Procedure:
+	- Browse to the *submit* folder.
+	- Type "make" (without quotation marks).
+	- "make clean" or "make clear" will delete all compiled files for a 
+	  "fresh" compilation.
+	
+Alternate Compilation Procedure (to merge in a test file, assuming a test 
+file named rtx_test_ext.s19 exists in the submit directory):
+	- Browse to the *submit* folder.
+	- Type "make test" (without quotation marks).
+	- "make clean" or "make clear" will delete all compiled files for a 
+	  "fresh" compilation.
+
+Commands (all case-sensitive):
+	- %WS hh:mm:ss will enable the wallclock, where hh is the hours 
+	  placeholder, mm is the minutes placeholder, and ss is the seconds
+	  placeholder.
+	- %WT will stop the wallclock.
+	- %clr will clear the screen.
+	- %C pid priority will change the priority of any given process.
+	- %Z will run the stress tests with their default priorities 
+	  (a = 3, b = 2, c = 1).
+	
+Other Notes:
+	The Makefile included with our implementation of RTX P4 creates four
+	different .s19 files, listed below:
+		- core.s19 (core functionality for the OS)
+		- rtx_loader.s19 (OS loader)
+		- rtx_test.s19 (contains required six test processes)
+		- rtx.s19 (required submission for P4)
+
+	core.s19 and rtx_loader.s19 make up the RTX itself.  rtx.s19 is a
+	combination of core.s19, rtx_loader.s19, and rtx_test.s19.
+
+	Hotkeys can be enabled by browsing to submit/shared/dbug.h and
+	uncommenting the line containing the following: #define _DEBUG_HOTKEYS.
+	
+	Valid hotkeys are !, @, #, $, ^, &, and * (the functionality of the
+	hotkeys should be obvious by their respective outputs in the debug console).
+	
+	#define _TEST_DEBUG has been DISABLED in this submission.  If it is needed,
+	it can be re-enabled by uncommenting the respective line in
+	submit/shared/dbug.h.
